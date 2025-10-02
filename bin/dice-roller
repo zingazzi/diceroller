@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+# /Users/marcozingoni/Playgound/Python/diceRoller/bin/dice-roller
+"""
+Standalone D&D Dice Roller Script
+
+This script provides a command-line interface for rolling dice using D&D notation.
+It can be run from anywhere once added to PATH.
+
+Usage:
+    dice-roller 1d20
+    dice-roller 3d6
+    dice-roller 4d8+3
+    dice-roller history
+    dice-roller history --limit 5
+    dice-roller history --all
+    dice-roller clear
+"""
+
+import sys
+import os
+from pathlib import Path
+
+# Get the project root directory (parent of bin directory)
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+try:
+    from dice_roller.cli import main
+except ImportError as e:
+    print(f"Error: Could not import dice_roller module: {e}")
+    print(f"Make sure the dice_roller package is available at: {project_root}")
+    print("You may need to install the package with: pip install -e .")
+    sys.exit(1)
+
+if __name__ == '__main__':
+    main()

@@ -5,13 +5,14 @@ A command-line dice roller for Dungeons & Dragons that supports standard dice no
 ## Features
 
 - 🎲 Roll dice using standard D&D notation (1d20, 3d6, 4d8+3)
-- 📜 Track and view roll history
+- 📜 Track and view roll history (default: last 20 rolls)
+- 🔧 Standalone executable script for easy command-line access
 - 🐳 Docker support for easy deployment
 - ✨ Beautiful CLI output with emojis
 
 ## Installation
 
-### Local Installation
+### Quick Start (Standalone Script)
 
 ```bash
 # Clone or download the project
@@ -20,9 +21,23 @@ cd diceRoller
 # Install dependencies
 pip install -r requirements.txt
 
-# Install the CLI tool
-pip install -e .
+# Use directly
+./bin/dice-roller 1d20
+
+# Or add to PATH for global access (see INSTALL.md for details)
+export PATH="$PATH:$(pwd)/bin"
+dice-roller 1d20
 ```
+
+### Package Installation
+
+```bash
+# Install as a Python package
+pip install -e .
+dice-roller 1d20
+```
+
+For detailed installation instructions, see [INSTALL.md](INSTALL.md).
 
 ### Docker Installation
 
@@ -55,11 +70,14 @@ dice-roller 2d10-1
 ### History Commands
 
 ```bash
-# Show all roll history
+# Show roll history (default: last 20 rolls)
 dice-roller history
 
-# Show last 5 rolls
+# Show specific number of recent rolls
 dice-roller history --limit 5
+
+# Show all roll history
+dice-roller history --all
 
 # Clear all history
 dice-roller clear
