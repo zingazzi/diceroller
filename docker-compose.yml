@@ -1,0 +1,13 @@
+# /Users/marcozingoni/Playgound/Python/diceRoller/docker-compose.yml
+version: '3.8'
+
+services:
+  dice-roller:
+    build: .
+    volumes:
+      - dice_history:/root
+    stdin_open: true
+    tty: true
+
+volumes:
+  dice_history:
